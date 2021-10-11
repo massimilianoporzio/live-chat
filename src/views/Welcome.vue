@@ -3,12 +3,12 @@
    <p>Welcome</p>
     <div v-if="!showLogin">
       <h2>Signup</h2>
-      <SignupForm />
+      <SignupForm @signedUp="enterChat" />
       <p>Already registered? <span @click="showLogin=!showLogin">Login</span> instead</p>
     </div>
     <div v-if="showLogin">
       <h2>Login</h2>
-      <LoginForm />
+      <LoginForm @loggedIn="enterChat" />
       <p>No account yet? <span @click="showLogin=!showLogin">Signup</span> instead</p>
     </div>
 
@@ -19,9 +19,11 @@
 import SignupForm from "@/components/SignupForm";
 import LoginForm from "@/components/LoginForm";
 import {ref} from "vue";
-
+const enterChat = ()=>{
+  $router.push({name:'Chatroom'})
+}
 const name = 'Home'
-const showLogin = ref(true)
+let showLogin = ref(true)
 
 </script>
 
