@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore,firebase , connectFirestoreEmulator } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, connectAuthEmulator } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA9uLReR5810uHh-Z1RyyeVKOz93inj6aY",
@@ -13,5 +13,8 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig)
 
 const projectAuth = getAuth(firebaseApp);
+// const projectAuth = getAuth();
+connectAuthEmulator(projectAuth, "http://localhost:9099");
 const db = getFirestore()
+connectFirestoreEmulator(db, 'localhost', 8081);
 export {db,projectAuth}

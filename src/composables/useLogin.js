@@ -1,8 +1,8 @@
 import {ref} from "vue";
 const error = ref(null)
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {connectAuthEmulator, signInWithEmailAndPassword} from "firebase/auth";
 import {projectAuth} from '@/firebase/config'
-
+connectAuthEmulator(projectAuth, "http://localhost:9099");
 const login = async (email,password) => {
     error.value = null //reset
     signInWithEmailAndPassword(projectAuth, email, password)

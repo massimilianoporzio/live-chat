@@ -19,8 +19,10 @@
 import SignupForm from "@/components/SignupForm";
 import LoginForm from "@/components/LoginForm";
 import {ref} from "vue";
+import {useRouter} from "vue-router";
+const router = useRouter()
 const enterChat = ()=>{
-  $router.push({name:'Chatroom'})
+  router.push({name:'Chatroom'})
 }
 const name = 'Home'
 let showLogin = ref(true)
