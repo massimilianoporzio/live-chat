@@ -15,6 +15,7 @@ const firebaseApp = initializeApp(firebaseConfig)
 const projectAuth = getAuth(firebaseApp);
 // const projectAuth = getAuth();
 connectAuthEmulator(projectAuth, "http://localhost:9099");
+// projectAuth.useEmulator('http://localhost:9099/')
 const db = getFirestore()
 connectFirestoreEmulator(db, 'localhost', 8081);
 export {db,projectAuth}
