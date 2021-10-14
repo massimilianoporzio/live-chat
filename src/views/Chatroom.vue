@@ -5,12 +5,26 @@
 
 </template>
 
-<script>
+<script setup>
 import Navbar from "@/components/Navbar";
-export default {
-  name: "Chatroom",
-  components: {Navbar}
-}
+import {projectAuth} from "@/firebase/config";
+import {watch} from "vue";
+
+import getUser from "@/composables/getUser";
+import {useRouter} from "vue-router";
+
+const name =  "Chatroom"
+const {user} = getUser()
+const router = useRouter()
+
+// watch(user,()=>{
+//   if(!user.value){
+//     //LOGGED OUT!!?!
+//     console.log("PUSH TO HOME")
+//     router.push({name: 'Welcome'})
+//   }
+// })
+
 </script>
 
 <style scoped>

@@ -9,5 +9,5 @@
   -moz-osx-font-smoothing: grayscale;
 
 }
-.firebase-emulator-warning { display: none; }
+/*.firebase-emulator-warning { display: none; }*/
 </style>

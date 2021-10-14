@@ -1,12 +1,12 @@
 import {ref} from "vue";
-import { signOut } from "firebase/auth";
+import {getAuthm, signOut } from "firebase/auth";
 import {projectAuth} from "@/firebase/config";
 
 const error = ref(null)
 
 const logout = async ()=>{
     error.value=null // reset
-    signOut(projectAuth).then(() => {
+    await signOut(projectAuth).then(() => {
         // Sign-out successful.
         console.log("SIGNED OUT")
     }).catch((err) => {
