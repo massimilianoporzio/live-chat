@@ -6,7 +6,7 @@ import {projectAuth} from "@/firebase/config";
 //auth guard
 const requireAuth = (to,from,next) => {
   let user = projectAuth.currentUser
-  console.log('Current user i nauth guard:',user)
+
   if (!user){
     console.log('AUTH GUARD: NOT LOGGED IN')
     next({name:'Welcome'})
@@ -17,11 +17,24 @@ const requireAuth = (to,from,next) => {
   }
 }
 
+// if logged in there is no need to auth
+const requireNoAuth = (to,from,next)=>{
+  let user = projectAuth.currentUser
+  //SE PRESENTE
+  if (user){
+    next({name:'Chatroom'})
+    return;
+  }else{
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: [requireNoAuth]
   },
   {
     path: '/chatroom',
